@@ -1,0 +1,10 @@
+Public API exported by yarl
+===========================
+
+Query: <class 'typing._UnionGenericAlias'>
+QueryVariable: <class 'typing._UnionGenericAlias'>
+SimpleQuery: <class 'typing._UnionGenericAlias'>
+URL: <class 'type'>
+cache_clear: <class 'function'>
+cache_configure: <class 'function'>
+cache_info: <class 'function'>
