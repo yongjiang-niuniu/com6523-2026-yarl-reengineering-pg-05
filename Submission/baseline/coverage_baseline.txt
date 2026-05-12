@@ -1,0 +1,78 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0
+rootdir: /Users/zhouxuhao/Documents/UOS/Spring/group-project-pg_05
+configfile: pytest.ini
+plugins: cov-7.1.0, xdist-3.8.0, hypothesis-6.152.6
+created: 14/14 workers
+14 workers [1219 items]
+
+........................................................................ [  5%]
+........................................................................ [ 11%]
+....s................................................................... [ 17%]
+..s...........x.............x........................................... [ 23%]
+........................................................................ [ 29%]
+........................................................................ [ 35%]
+........................................................................ [ 41%]
+........................................................................ [ 47%]
+........................................................................ [ 53%]
+........................................................................ [ 59%]
+......................................................................s. [ 64%]
+.ss..s....s........s......ssssss........sssssss...ss....sssss.....ssssss [ 70%]
+s.sssss..sssssss.s...sss.ssss.s.sssss.........sssssssss..sssss..sssss... [ 76%]
+..ssssss........s..s...s.s.........s..s.s............................... [ 82%]
+........................................................................ [ 88%]
+........................................................................ [ 94%]
+..........................................................sssssssss
+ERROR: Coverage failure: total of 98 is less than fail-under=99
+                                                                         [100%]
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.13-final-0 _______________
+
+Name                     Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------
+tests/test_pydantic.py      35     31      0      0    11%   13-64
+tests/test_quoting.py      306     13      6      1    96%   11-25, 44
+yarl/_quoting.py             9      3      0      0    67%   10-17
+yarl/_url.py               759     18    272      5    98%   60-63, 97, 256, 1401, 1405, 1495-1514, 1543-1544
+--------------------------------------------------------------------
+TOTAL                     4128     65    482      6    98%
+
+17 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+FAIL Required test coverage of 98.95% not reached. Total coverage: 98.46%
+============================= slowest 10 durations =============================
+0.08s call     tests/test_quoting.py::test_fuzz__PyQuoter
+0.06s call     tests/test_quoting.py::test_quote_unquote_parameter_path_safe[PyUnquoter-PyQuoter]
+0.05s call     tests/test_quoting.py::test_fuzz__PyUnquoter
+0.04s call     tests/test_quoting.py::test_quote_unquote_parameter_requote[PyUnquoter-PyQuoter]
+0.04s call     tests/test_quoting.py::test_quote_unquote_parameter[PyUnquoter-PyQuoter]
+0.02s setup    tests/test_quoting.py::test_unquoting[py_unquoter-111]
+0.02s setup    tests/test_quoting.py::test_default_quoting[py_quoter-\x0f]
+0.02s setup    tests/test_normalize_path.py::test_normalize_path[path/to/./.-path/to/]
+0.02s teardown tests/test_url.py::test_join_from_rfc_3986_normal[../g-http://a/b/g]
+0.02s teardown tests/test_url.py::test_parent_for_no_netloc_url
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_pydantic.py:10: could not import 'pydantic': No module named 'pydantic'
+SKIPPED [1] tests/test_quoting.py:42: Extensions available but not imported
+SKIPPED [10] tests/test_quoting_benchmarks.py: pytest-codspeed needs to be installed
+SKIPPED [89] tests/test_url_benchmarks.py: pytest-codspeed needs to be installed
+SKIPPED [2] tests/test_url_benchmarks.py:833: pytest-codspeed needs to be installed
+XFAIL tests/test_quoting.py::test_unquoting_invalid_utf8_sequence[py_unquoter-%AB] - 
+    FIXME: After conversion to bytes, should not cause UTF-8 decode fail.
+    See https://url.spec.whatwg.org/#percent-encoded-bytes
+
+    Refs:
+    * https://github.com/aio-libs/yarl/pull/216
+    * https://github.com/aio-libs/yarl/pull/214
+    * https://github.com/aio-libs/yarl/pull/7
+    
+XFAIL tests/test_quoting.py::test_unquoting_invalid_utf8_sequence[py_unquoter-%AB%AB] - 
+    FIXME: After conversion to bytes, should not cause UTF-8 decode fail.
+    See https://url.spec.whatwg.org/#percent-encoded-bytes
+
+    Refs:
+    * https://github.com/aio-libs/yarl/pull/216
+    * https://github.com/aio-libs/yarl/pull/214
+    * https://github.com/aio-libs/yarl/pull/7
+    
+================= 1115 passed, 103 skipped, 2 xfailed in 2.89s =================
