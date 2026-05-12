@@ -1,0 +1,34 @@
+name: Regression tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements/test.txt
+
+      - name: Install package in pure Python mode
+        run: |
+          YARL_NO_EXTENSIONS=1 python -m pip install -e .
+
+      - name: Run regression tests
+        run: |
+          YARL_NO_EXTENSIONS=1 python -m pytest -q --no-cov tests
+
+
