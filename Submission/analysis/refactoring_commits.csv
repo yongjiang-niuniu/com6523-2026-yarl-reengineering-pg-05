@@ -1,0 +1,109 @@
+matched_keyword,commit,short_commit,date,author,subject
+refactor,995abe0cf47ee34e717a4d7a078a208bda1413d6,995abe0,2024-10-17,J. Nick Koston,Refactor `URL.join` to avoid intermediate dict (#1313)
+refactor,7d6105540d7ccd8574509375cd7a99b85be11969,7d61055,2024-09-08,J. Nick Koston,Refactor _get_str_query to avoid intermediate variable (#1132)
+refactor,8c047e5fca27bff0bcf9ddd2fa89e061c835f487,8c047e5,2023-11-16,Sviatoslav Sydorenko,📝🐛 Fix broken refactor @ published changelog
+refactor,a3ad3346be85f6a82224c79aac091e56f85d0af6,a3ad334,2018-10-13,Sviatoslav Sydorenko,Refactor sequence in test_never_quote
+refactor,b51b37aebe069ed9ea1c723a7866b0dd89061786,b51b37a,2018-01-12,Andrew Svetlov,Quote classes (#155)
+refactor,38f15f147ce4808710cb7f1d327a7d5caf8a35fe,38f15f1,2018-01-11,Andrew Svetlov,Optimization (#154)
+refactor,34c4d1d318e7578d384010e3ad14eeff3dad6220,34c4d1d,2016-09-05,Andrew Svetlov,Refactoring (#7)
+refactor,7cdfe93e367b3100b6c14266ff362e7a9c4780d0,7cdfe93,2016-08-04,Andrew Svetlov,Refactor flake8 checks
+cleanup,e4cae0b14f472fda5547c5ea1e0d26cc19d34491,e4cae0b,2025-10-05,J. Nick Koston,cleanup contrib message
+cleanup,d848f50d4710ab3fa58629de6e4039778865242e,d848f50,2025-10-05,J. Nick Koston,cleanup contrib message
+cleanup,14c3759058cb358b1b8a718a3cad8148296087ac,14c3759,2024-11-17,J. Nick Koston,Small cleanups to URL.join (#1416)
+cleanup,5c2af26b91e5d51ebdea2db5cc94aa324f6efb98,5c2af26,2024-10-30,J. Nick Koston,Small cleanups to `encode_url` (#1405)
+cleanup,979e06a846142f8f5ed005fde8ab2a1eceb58372,979e06a,2024-10-30,J. Nick Koston,Additional small cleanups to as a followup to removing `self._val` (#1402)
+cleanup,8ce8d67834fc5160aada6864af9fb0652262f9b0,8ce8d67,2024-10-30,J. Nick Koston,Small cleanups as a followup to removing `self._val` (#1399)
+cleanup,53b19a66c4ac7841312e258d98c648f2ed2f1bb1,53b19a6,2024-10-25,J. Nick Koston,cleanup
+cleanup,088dafb740fb2b26553342ba2ce90dda89b6bddd,088dafb,2024-10-20,J. Nick Koston,Cleanup constant naming in `_url.py` (#1354)
+cleanup,29bc0ccf321f822804121a19dea9b318ea4991ff,29bc0cc,2024-10-19,J. Nick Koston,Small internal code cleanups (#1335)
+cleanup,443ba5c4416306322f64a4064262ed54046ad206,443ba5c,2024-10-17,J. Nick Koston,Additional cleanups for `URL.parent` tests (#1325)
+cleanup,780de98e4ba908192ab1621af62d589f9f64343a,780de98,2024-10-17,J. Nick Koston,Small cleanups to making children paths (#1304)
+cleanup,755ba9c235c964a1d8ba820e3b3ca68c210bdd66,755ba9c,2024-10-05,J. Nick Koston,Cleanup some unnecessary internal property accesses (#1177)
+cleanup,fa321e5f79ffa9f587d2d3103130de81bd5845d4,fa321e5,2024-09-09,J. Nick Koston,Cleanup tense of changelog messages (#1140)
+cleanup,0cb5c397ceaff8788bc5066f9b7ab088be1874c2,0cb5c39,2024-09-01,J. Nick Koston,Cleanup asyncio reference in the 1.9.7 changelog (#1079)
+cleanup,850f514ebd53e661c264ef90d987c0338fa5cca7,850f514,2024-08-31,J. Nick Koston,Cleanup released changelog messages (#1072)
+cleanup,94b8679da05fd7b2d7bc86ed95e84c09f1946d75,94b8679,2022-12-12,dereckt,Fix to URL.with_port() input filtering (#793)
+cleanup,65456de92f1ed44c067c7b29f2a558221aa5f169,65456de,2019-10-01,Andrew Svetlov,Cleanup setup
+cleanup,ec4942d7195b443d216aa2ff475d591b468055ff,ec4942d,2019-10-01,Andrew Svetlov,Cleanup pipeline
+cleanup,3d104fa536e1c1921e43db2729354e7ae9affd11,3d104fa,2018-01-12,Andrew Svetlov,Optimization (#157)
+cleanup,daf9ef485598581e0895c240d4cb89508f110af2,daf9ef4,2016-09-06,Andrew Svetlov,Cleanup password if user is None for with_user calls
+cleanup,6d734f859be64bfd2835562eec789f9dd4ac4899,6d734f8,2016-08-03,Andrew Svetlov,Cleanup fragment and query on getting parent
+clean up,0a94c6e4948e00fff072c0cf367afbf4ac36f906,0a94c6e,2023-06-14,Martijn Pieters,Correct square bracket handling in URL netloc (#882)
+simplify,ca9f47a319d57a99e1df10f8fb4817b7adc5eed7,ca9f47a,2024-10-15,J. Nick Koston,Simplify processing of username and password for unencoded URLs (#1268)
+simplify,c4151fe8ff00be9ea9dc858169ada7a12af32e37,c4151fe,2024-10-11,J. Nick Koston,Simplify raw_parts branching (#1201)
+simplify,0afe7c513c4721f58e41234a28133fd2878f0dba,0afe7c5,2024-09-07,J. Nick Koston,Simplify computing ports (#1123)
+simplify,79cb0ca7c4fd05c81015a6cee06bb41169f428b2,79cb0ca,2024-09-02,Sviatoslav Sydorenko,🧪💅 Simplify the Codecov check names
+simplify,fd8665460e8aaa6c7318c1764eadc991a7709a4c,fd86654,2024-06-27,Sviatoslav Sydorenko,Simplify `:gh:` ref replacement @ pkg description
+simplify,f9fb6b62c7452ecbfeacfc4cdd82637df00b3806,f9fb6b6,2024-05-30,Sviatoslav Sydorenko,Simplify excluding tmp dir in build backend
+simplify,8cf77bd3f5054b2d80dfc3bc0eebb3d72a6d2d78,8cf77bd,2023-11-27,Sviatoslav Sydorenko,📦 Simplify build settings dropping leading `--`
+rewrite,fc08cb8d36a5622dd77259fa19d8aacde9305de8,fc08cb8,2024-11-21,Nameless,Allow replacing path without replacing query or fragment (#1421)
+rewrite,3ecfc65d776895f02a2cb72623ba79732ce700c7,3ecfc65,2020-07-26,Andrew Svetlov,Rewrite 'yarl' module name for exposed public API functions
+rewrite,c68f39f7cbff5e9e323c16922915f40d623f5171,c68f39f,2016-09-09,Artyom Boyko,add kwargs support for with_query (#10)
+split,41af4a354367b4136d696f32f5150aff470bde12,41af4a3,2024-10-30,J. Nick Koston,Complete removal of `SplitResult` as an internal (#1396)
+split,a8b8d7f76af57ff44cfda6bde90f379c9e230460,a8b8d7f,2024-10-21,J. Nick Koston,Move `split_url` cache around encoding the URL (#1369)
+split,bbb82574747f2323e876dcd3cede1b996daef9a2,bbb8257,2024-10-20,J. Nick Koston,Add coverage for passing encoded `SplitResult` to create a `URL` (#1366)
+split,a9ba9bbd455c402fa19f30a311ba88adb930c5c6,a9ba9bb,2024-10-15,J. Nick Koston,Avoid splitting the netloc for simple cases when constructing URL (#1277)
+split,5c045587e84f7a7c997b6f2fb765ca2d2f9e19a1,5c04558,2024-10-12,J. Nick Koston,Split wheel builds into manylinux and musllinux groups to speed up CI (#1235)
+split,e53d1abecdb5305eefa30a7396a71d3e74df1ba6,e53d1ab,2023-11-24,Sviatoslav Sydorenko,💄🔧 Split out the pytest config
+split,269651e7a0ac679af5696b769f6963e271b001b2,269651e,2023-11-18,Sviatoslav Sydorenko,💄🔧 Split out the Towncrier config
+split,be526ce057dc57885868ac8a27e9eb2fac1ea7b3,be526ce,2023-11-18,Sviatoslav Sydorenko,📝 Split PR #829 change note part into `contrib`
+split,76b2fd035562fbb3be8cfdc04914ffea1ec0a82c,76b2fd0,2023-04-21,Martijn Pieters,Mark semicolon-based tests as xfail in specific cases (#852)
+split,0c37a609fe96856f9da7f3ce1cb4722742353447,0c37a60,2017-02-16,Dmitry Orlov,[fix] using urlunsplit directly
+move,792b855c1d0d0c1cb4b0cf55029d4bb8f8f1ba28,792b855,2025-06-03,Finn Womack,remove fork branch trigger
+move,eb520f731a7f9053c629f9b34db59e07cccbd87d,eb520f7,2025-06-03,Finn Womack,remove windows arm from tests
+move,74f79ae64b116d3996fae4f7e5ec4c5100224f44,74f79ae,2025-04-05,J. Nick Koston,Remove exclude for building armv7l wheels on manylinux (#1495)
+move,9f99a40c36f9c83647c795d541b3b48351391a4b,9f99a40,2024-11-20,J. Nick Koston,Remove internal `_default_port` property (#1424)
+move,d6a65ebad5d5f0866446c4a6670ac485a7f0e07f,d6a65eb,2024-11-09,J. Nick Koston,Remove `noexcept` from `_restore_ch` (#1410)
+move,317e38464d07371a50ecfa3be6c0b996d265ccd0,317e384,2024-10-25,J. Nick Koston,remove
+move,ea970f2e388dc071ac118b8fb9c4ed653fa8499a,ea970f2,2024-10-20,J. Nick Koston,Remove unreachable authority absolute path check in `URL.__new__` (#1368)
+move,f42f34e1aa680558881c7d1e3e0dfdb986b41b72,f42f34e,2024-10-20,J. Nick Koston,Move path functions into their own module (#1362)
+move,12413d3efcfe78c46e2b5a52c7f31ab3b07924e9,12413d3,2024-10-20,J. Nick Koston,Move human_quote into the quoters module (#1361)
+move,55967c22cffa823ab8a207b891b8acd0937fc7f6,55967c2,2024-10-20,J. Nick Koston,Move URL parsing functions to their own module (#1360)
+move,cb24592b756ae0879a51e0e4fbbb99e1dfc3ec5e,cb24592,2024-10-20,J. Nick Koston,Move query string functions into their own module (#1356)
+move,fff1f15e5d8f1baf589be9b7211d6582ad6d8f39,fff1f15,2024-10-20,J. Nick Koston,Move quoters to their own module (#1355)
+move,db92ab5f8fc35041c98108e11cae8d53ab7ddb6b,db92ab5,2024-10-20,J. Nick Koston,Move lru cache from inside of `_encode_host` to outside (#1348)
+move,8f9854599b53e2fc7dabfddb30b5e0f1c54bc5fd,8f98545,2024-10-20,J. Nick Koston,Remove unused sentinel code (#1352)
+move,10ce80a5773d39f7afc09b8bc05a5ed8915b4006,10ce80a,2024-10-16,J. Nick Koston,Remove redundant hypothesis pytest mark (#1298)
+move,5bbbe2eb8bd75cbd0e3832e500e947a6dd1f2a09,5bbbe2e,2024-10-15,J. Nick Koston,Remove missed Python 3.8 test branching (#1281)
+move,fab5b8f8e18004fa851bfe241a85adc00cddc536,fab5b8f,2024-10-12,J. Nick Koston,Remove unused requote argument from _make_netloc (#1217)
+move,7ffb93251885c424363f141a3c823f58ad734552,7ffb932,2024-10-11,J. Nick Koston,Remove unused code in _quoting_c.pyi (#1200)
+move,f81ac5340a63b8c8359da995754b86b1d29045db,f81ac53,2024-10-03,J. Nick Koston,Remove reference to alpine linux from readme (#1172)
+move,ee90b000f034d42c0694f4e52609d259c13e5496,ee90b00,2024-09-08,J. Nick Koston,Remove useless path replacement in with_query (#1129)
+move,f8ba9677dd8b3defec41816a7468e4c4fd19fa57,f8ba967,2024-09-06,Sviatoslav Sydorenko,🔥 Get rid of the old manylinux scripts
+move,dc259f0a1922021f525c31edb60b69b3a97a454f,dc259f0,2024-09-03,Sviatoslav Sydorenko,💅 Move CoC checkbox to top of bug report form
+move,7c1220bc0930afbfe52021d47b83a3ea9995df60,7c1220b,2024-09-01,J. Nick Koston,Remove fallback to getservbyname in _get_default_port (#1076)
+move,f6e2c95474a31de03406c7ef41007f0a739384ac,f6e2c95,2024-08-30,Shantanu,Remove unused type ignores and casts (#1031)
+move,801a35f233466c1bf11215c892c40c55026f8fca,801a35f,2023-12-17,Sviatoslav Sydorenko,💅Move MyPy `show-error-codes` from CLI to config
+move,04399eb70236912d2501a7731f25d02002e79ac5,04399eb,2023-12-05,Sviatoslav Sydorenko,Exterminate offensive references from the project
+move,6e61b44a05e590be14ab776904b83f544daf8c49,6e61b44,2023-11-29,Sviatoslav Sydorenko,🎨Move `tomllib` access to `_compat` @ packaging
+move,f86fcd7ba32498a90058f1ec7ed5192a1ee9db0b,f86fcd7,2023-11-27,Sviatoslav Sydorenko,📦🧪 Move Cython translation in CI to backend
+move,8ba27140b477f5f3cfde5b46b790338e04ce14a6,8ba2714,2023-11-27,Sviatoslav Sydorenko,📦Move Cython setup helpers in a separate module
+move,ec3f5740f8b0d8bf11b3cc63f5c5ae2f7c796af7,ec3f574,2023-11-27,Sviatoslav Sydorenko,📦 Move src dir copying to CM @ build backend
+move,912f973e896ae3635eca424cd583e0e5a0e29be7,912f973,2023-11-24,Sviatoslav Sydorenko,🧪 Move pytest verbosity setting to CI
+move,a29d819a0e1442462e423049fa2f21395855ba02,a29d819,2023-11-19,Sviatoslav Sydorenko,🧪 Run MyPy against supported Python range
+move,bc1e01088aef0461b660a9cda2ccc2a40a3d2f13,bc1e010,2023-11-19,Sviatoslav Sydorenko,🐛 Move artifact names from `env` ctx to `needs`
+move,2125c1322ebde7d06763efc0a20579be870cf1aa,2125c13,2023-11-19,Sviatoslav Sydorenko,🎨 Move build wheels CI job to reusable workflow
+move,98eac52a7add38dd770f2baf95f0c4c5a62165e5,98eac52,2023-11-16,Sviatoslav Sydorenko,📦 Move packaging to PEP 517 in-tree backend (#893)
+move,97d0d37f5244c9f57ca16a7a367d6992f79d30ba,97d0d37,2023-06-12,Sviatoslav Sydorenko,📦🎨 Move package attrs to declarative config
+move,79a777a32c9c030013a992f184970e7306955683,79a777a,2023-04-19,Martijn Pieters,ci: Remove long-obsolete black dependency (#844)
+move,19ac346bd40b46907ca6238cbe0325aa2f0ea53d,19ac346,2023-04-19,Martijn Pieters,ci: remove docs from the ci requirements for tests (#843)
+move,a401202f17d38a6651f8f4209368f5857c383ae5,a401202,2022-08-01,Sviatoslav Sydorenko,Move Python 3.11 to the main CI matrix
+move,ab25e74eb94d23b1e06713622b68e1fee7fd4ca4,ab25e74,2022-03-28,Martijn Pieters,Unbreak black (#701)
+move,401ffb139f2c89f402a6dbd6c5429e7d370305b8,401ffb1,2022-03-28,Martijn Pieters,Unbreak black (#701)
+move,58821e5c9e17a24aab3bd78c86e4bef3d52e99ec,58821e5,2021-05-28,Andrew Svetlov,"Remove autosquash action, github has native automerge facility now"
+move,418771b285615d65bf8250ab0aadf122f77c252c,418771b,2021-02-22,dependabot[bot],Bump mypy from 0.800 to 0.812 (#564)
+move,eb6b55b89bebed72c982c2a8bc4891a34b185ee1,eb6b55b,2021-01-01,dependabot[bot],Bump idna from 2.10 to 3.0 (#554)
+move,b25c5b4a0c216601d1c3a098cf3dacc07d366424,b25c5b4,2020-12-21,dependabot[bot],Bump sphinx from 3.3.1 to 3.4.0 (#552)
+move,cecebd7d397ecbab6811e824eb8c29b5915371b2,cecebd7,2020-12-14,dependabot[bot],Bump pytest from 6.1.2 to 6.2.0 (#550)
+move,4851e240a0762ee7252311b609c7d75121774496,4851e24,2019-10-01,Andrew Svetlov,Move azure config file
+move,8adaa3785d1c493d0c524acf54d8f76b8548e149,8adaa37,2019-08-31,Andrew Svetlov,Remove pyup configuration (#331)
+move,c333973345d98a91c0de934dc424b802b58d9599,c333973,2018-10-13,Sviatoslav Sydorenko,Move PyPI publishing to a separate stage
+move,9390c899ee4b42ea23114eae51ad7be1030afa76,9390c89,2017-10-17,Alex Kuzmenko,Move dependencies in one folder (#118)
+move,713c809611c1f0278933a89c29d33c7db78ecb83,713c809,2017-07-14,Serhii Kostel,Fix with_path leading slash. (#90)
+move,1eccd48efed3e841f7e4bf037353bd383af42da8,1eccd48,2017-02-20,Dmitry Orlov,[fix] remove useless docstring
+move,aea25fc981227ee12313b5b247f9b327fe3eaa2b,aea25fc,2017-02-08,Nikolay Kim,remove debug print
+move,61e95c4348aed0c3d60db0fa013e9d67b2261986,61e95c4,2017-01-10,Dmitry Orlov,[fix] remove unused variables
+move,0568490ed510828f2b5c58935a9a6847d2454edd,0568490,2016-09-07,Andrew Svetlov,Remove sphinx markup from README
+move,bfc49e3f74e8dba14f983c55c95bc6e6636653ed,bfc49e3,2016-09-02,Andrew Svetlov,"Document .join(), remove allow_fragments"
+move,d3891246e4ef8c40629072248fdd831b4cf35eb7,d389124,2016-08-28,Andrew Svetlov,"Remove from_bytes, byte-ish are accepted by ctor"
+deprecate,9f7d3313c64c9ef2ff68bf11fb574b2712d4d71e,9f7d331,2024-11-15,Sviatoslav Sydorenko,🧪 Use plural `files` in codecov action

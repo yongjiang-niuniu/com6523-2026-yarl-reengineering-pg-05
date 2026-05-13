@@ -1,0 +1,16 @@
+file,lines,num_test_functions
+tests/test_cache.py,101,8
+tests/test_cached_property.py,30,3
+tests/test_normalize_path.py,36,1
+tests/test_pickle.py,60,4
+tests/test_pydantic.py,64,6
+tests/test_quoting.py,582,79
+tests/test_quoting_benchmarks.py,90,10
+tests/test_update_query.py,473,53
+tests/test_url.py,2492,306
+tests/test_url_benchmarks.py,840,90
+tests/test_url_build.py,391,45
+tests/test_url_cmp_and_hash.py,88,14
+tests/test_url_parsing.py,625,66
+tests/test_url_query.py,244,14
+tests/test_url_update_netloc.py,291,42
