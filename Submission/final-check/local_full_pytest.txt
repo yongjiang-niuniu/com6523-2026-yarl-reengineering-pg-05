@@ -1,0 +1,55 @@
+bringing up nodes...
+bringing up nodes...
+
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 17%]
+.............................x..........s............................... [ 23%]
+.......................x.........s...................................... [ 29%]
+........................................................................ [ 35%]
+........................................................................ [ 41%]
+........................................................................ [ 46%]
+........................................................................ [ 52%]
+........................................................................ [ 58%]
+........................................................................ [ 64%]
+....s............................ssssssssssss...ssssss.........ssssss... [ 70%]
+..............ssssss........ssssssss.ssss.sssssssssssssssssss.ssssssssss [ 76%]
+ss.sssss...s..ssss....ss..s.......s.s......................s............ [ 82%]
+................s....................................................... [ 88%]
+........................................................................ [ 93%]
+.................................................................sssssss [ 99%]
+ss                                                                       [100%]
+============================= slowest 10 durations =============================
+0.05s call     tests/test_quoting.py::test_quote_unquote_parameter_requote[PyUnquoter-PyQuoter]
+0.04s call     tests/test_quoting.py::test_fuzz__PyQuoter
+0.03s call     tests/test_quoting.py::test_quote_unquote_parameter_path_safe[PyUnquoter-PyQuoter]
+0.03s call     tests/test_quoting.py::test_fuzz__PyUnquoter
+0.02s call     tests/test_quoting.py::test_quote_unquote_parameter[PyUnquoter-PyQuoter]
+0.01s call     tests/test_url_update_netloc.py::test_with_default_port_normalization
+
+(4 durations < 0.005s hidden.  Use -vv to show these durations.)
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_pydantic.py:10: could not import 'pydantic': No module named 'pydantic'
+SKIPPED [1] tests/test_quoting.py:42: Extensions available but not imported
+SKIPPED [10] tests/test_quoting_benchmarks.py: pytest-codspeed needs to be installed
+SKIPPED [89] tests/test_url_benchmarks.py: pytest-codspeed needs to be installed
+SKIPPED [2] tests/test_url_benchmarks.py:833: pytest-codspeed needs to be installed
+XFAIL tests/test_quoting.py::test_unquoting_invalid_utf8_sequence[py_unquoter-%AB] - 
+    FIXME: After conversion to bytes, should not cause UTF-8 decode fail.
+    See https://url.spec.whatwg.org/#percent-encoded-bytes
+
+    Refs:
+    * https://github.com/aio-libs/yarl/pull/216
+    * https://github.com/aio-libs/yarl/pull/214
+    * https://github.com/aio-libs/yarl/pull/7
+    
+XFAIL tests/test_quoting.py::test_unquoting_invalid_utf8_sequence[py_unquoter-%AB%AB] - 
+    FIXME: After conversion to bytes, should not cause UTF-8 decode fail.
+    See https://url.spec.whatwg.org/#percent-encoded-bytes
+
+    Refs:
+    * https://github.com/aio-libs/yarl/pull/216
+    * https://github.com/aio-libs/yarl/pull/214
+    * https://github.com/aio-libs/yarl/pull/7
+    
+1122 passed, 103 skipped, 2 xfailed in 1.25s
