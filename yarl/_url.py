@@ -284,6 +284,36 @@ def from_parts_uncached(
 from_parts = lru_cache(from_parts_uncached)
 
 
+def _resolve_join_path(base: "URL", join_path: str) -> str:
+    orig_path = base._path
+    if join_path[0] == "/":
+        path = join_path
+    elif not orig_path:
+        path = f"/{join_path}"
+    elif orig_path[-1] == "/":
+        path = f"{orig_path}{join_path}"
+    else:
+        # …
+        # and relativizing ".."
+        # parts[0] is / for absolute urls,
+        # this join will add a double slash there
+        path = "/".join([*base.parts[:-1], ""]) + join_path
+        # which has to be removed
+        if orig_path[0] == "/":
+            path = path[1:]
+    return normalize_path(path) if "." in path else path
+
+
+def _resolve_join_query(base_query: str, join_path: str, join_query: str) -> str:
+    return join_query if join_path or join_query else base_query
+
+
+def _resolve_join_fragment(
+    base_fragment: str, join_path: str, join_fragment: str
+) -> str:
+    return join_fragment if join_path or join_fragment else base_fragment
+
+
 @rewrite_module
 class URL:
     # Don't derive from str
@@ -1438,33 +1468,15 @@ class URL:
         if (join_netloc := url._netloc) and scheme in USES_AUTHORITY:
             return from_parts(scheme, join_netloc, url._path, url._query, url._fragment)
 
-        orig_path = self._path
-        if join_path := url._path:
-            if join_path[0] == "/":
-                path = join_path
-            elif not orig_path:
-                path = f"/{join_path}"
-            elif orig_path[-1] == "/":
-                path = f"{orig_path}{join_path}"
-            else:
-                # …
-                # and relativizing ".."
-                # parts[0] is / for absolute urls,
-                # this join will add a double slash there
-                path = "/".join([*self.parts[:-1], ""]) + join_path
-                # which has to be removed
-                if orig_path[0] == "/":
-                    path = path[1:]
-            path = normalize_path(path) if "." in path else path
-        else:
-            path = orig_path
+        join_path = url._path
+        path = _resolve_join_path(self, join_path) if join_path else self._path
 
         return from_parts(
             scheme,
             self._netloc,
             path,
-            url._query if join_path or url._query else self._query,
-            url._fragment if join_path or url._fragment else self._fragment,
+            _resolve_join_query(self._query, join_path, url._query),
+            _resolve_join_fragment(self._fragment, join_path, url._fragment),
         )
 
     def joinpath(self, *other: str, encoded: bool = False) -> "URL":
