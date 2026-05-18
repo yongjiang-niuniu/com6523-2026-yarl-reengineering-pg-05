@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -9,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "Submission" / "final-check"
 
 
-def run(command: list[str], output_file: Path | None = None) -> None:
+def run(command: list[str], *output_files: Path) -> None:
     print(f"\n$ {' '.join(command)}")
 
     result = subprocess.run(
@@ -22,7 +23,7 @@ def run(command: list[str], output_file: Path | None = None) -> None:
 
     print(result.stdout)
 
-    if output_file is not None:
+    for output_file in output_files:
         output_file.parent.mkdir(parents=True, exist_ok=True)
         output_file.write_text(result.stdout, encoding="utf-8")
 
@@ -32,6 +33,7 @@ def run(command: list[str], output_file: Path | None = None) -> None:
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    os.environ.setdefault("YARL_NO_EXTENSIONS", "1")
 
     run(
         [sys.executable, "-m", "pytest", "-q", "--no-cov", "tests/test_url_join_regression.py"],
@@ -39,23 +41,40 @@ def main() -> None:
     )
 
     run(
-        [sys.executable, "-m", "pytest", "-q", "--no-cov", "tests/test_url.py", "-k", "join"],
+        [sys.executable, "-m", "pytest", "-q", "--no-cov", "tests/test_url_joinpath_regression.py"],
+        OUT_DIR / "local_url_joinpath_regression_tests.txt",
+    )
+
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "--no-cov",
+            "tests/test_url.py",
+            "-k",
+            "join or joinpath or div",
+        ],
         OUT_DIR / "local_existing_join_tests.txt",
     )
 
     run(
         [sys.executable, "-m", "pytest", "-q", "--no-cov", "tests"],
         OUT_DIR / "local_full_pytest.txt",
+        OUT_DIR / "final_pytest_result.txt",
     )
 
     run(
-        ["radon", "cc", "yarl", "-s", "-a"],
+        [sys.executable, "-m", "radon", "cc", "yarl", "-s", "-a"],
         OUT_DIR / "local_radon_complexity.txt",
+        OUT_DIR / "final_radon_complexity.txt",
     )
 
     run(
-        ["radon", "mi", "yarl", "-s"],
+        [sys.executable, "-m", "radon", "mi", "yarl", "-s"],
         OUT_DIR / "local_radon_maintainability.txt",
+        OUT_DIR / "final_radon_maintainability.txt",
     )
 
     print("\nLocal quality checks completed successfully.")
