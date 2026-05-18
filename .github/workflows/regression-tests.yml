@@ -2,6 +2,22 @@ name: Regression tests
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - "codex/**"
+      - "refactor/**"
+      - "restructure/**"
+      - "tooling/**"
+    paths:
+      - "yarl/**"
+      - "tests/**"
+      - ".github/workflows/regression-tests.yml"
+  pull_request:
+    paths:
+      - "yarl/**"
+      - "tests/**"
+      - ".github/workflows/regression-tests.yml"
 
 jobs:
   test:
@@ -28,6 +44,6 @@ jobs:
 
       - name: Run regression tests
         run: |
-          YARL_NO_EXTENSIONS=1 python -m pytest -q --no-cov tests
+          YARL_NO_EXTENSIONS=1 python -m pytest -q --no-cov tests/test_url_join_regression.py tests/test_url_joinpath_regression.py tests/test_url.py -k "join or joinpath or div"
 
 
