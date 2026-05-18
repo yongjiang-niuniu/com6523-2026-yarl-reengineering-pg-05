@@ -35,7 +35,7 @@ from ._parse import (
     split_url,
     unsplit_result,
 )
-from ._path import normalize_path, normalize_path_segments
+from ._path import _make_child_path, normalize_path
 from ._query import (
     Query,
     QueryVariable,
@@ -1022,50 +1022,14 @@ class URL:
         return tuple(UNQUOTER(suffix) for suffix in self.raw_suffixes)
 
     def _make_child(self, paths: "Sequence[str]", encoded: bool = False) -> "URL":
-        """
-        add paths to self._path, accounting for absolute vs relative paths,
-        keep existing, but do not create new, empty segments
-        """
-        parsed: list[str] = []
-        needs_normalize: bool = False
-        for idx, path in enumerate(reversed(paths)):
-            # empty segment of last is not removed
-            last = idx == 0
-            if path and path[0] == "/":
-                raise ValueError(
-                    f"Appending path {path!r} starting from slash is forbidden"
-                )
-            # We need to quote the path if it is not already encoded
-            # This cannot be done at the end because the existing
-            # path is already quoted and we do not want to double quote
-            # the existing path.
-            path = path if encoded else PATH_QUOTER(path)
-            needs_normalize |= "." in path
-            segments = path.split("/")
-            segments.reverse()
-            # remove trailing empty segment for all but the last path
-            parsed += segments[1:] if not last and segments[0] == "" else segments
-
-        if (path := self._path) and (old_segments := path.split("/")):
-            # If the old path ends with a slash, the last segment is an empty string
-            # and should be removed before adding the new path segments.
-            old = old_segments[:-1] if old_segments[-1] == "" else old_segments
-            old.reverse()
-            parsed += old
-
-        # If the netloc is present, inject a leading slash when adding a
-        # path to an absolute URL where there was none before.
-        if (netloc := self._netloc) and parsed and parsed[-1] != "":
-            parsed.append("")
-
-        parsed.reverse()
-        if not netloc or not needs_normalize:
-            return from_parts(self._scheme, netloc, "/".join(parsed), "", "")
-
-        path = "/".join(normalize_path_segments(parsed))
-        # If normalizing the path segments removed the leading slash, add it back.
-        if path and path[0] != "/":
-            path = f"/{path}"
+        netloc = self._netloc
+        path = _make_child_path(
+            self._path,
+            paths,
+            encoded=encoded,
+            has_netloc=bool(netloc),
+            path_quoter=PATH_QUOTER,
+        )
         return from_parts(self._scheme, netloc, path, "", "")
 
     def with_scheme(self, scheme: str) -> "URL":
