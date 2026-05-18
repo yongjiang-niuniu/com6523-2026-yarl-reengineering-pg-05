@@ -1,20 +1,22 @@
 from __future__ import annotations
 
 import csv
+import os
 import subprocess
+from argparse import ArgumentParser, Namespace
 from collections import Counter
-from datetime import datetime
 from pathlib import Path
 
 
-UPSTREAM = Path("../yarl-upstream")
-OUT_DIR = Path("Submission/analysis")
+DEFAULT_UPSTREAM = Path(os.environ.get("YARL_UPSTREAM_REPO", "../yarl-upstream"))
+DEFAULT_OUT_DIR = Path(os.environ.get("YARL_ANALYSIS_OUT", "Submission/analysis"))
+BASE_SNAPSHOT = "e25e8d23e6912db52a23513ef1f6a17f889751ef"
 SOURCE_SUFFIXES = {".py", ".pyx", ".pxd", ".pyi"}
 
 
-def git(*args: str) -> str:
+def git(upstream: Path, *args: str) -> str:
     result = subprocess.run(
-        ["git", "-C", str(UPSTREAM), *args],
+        ["git", "-C", str(upstream), *args],
         check=True,
         text=True,
         stdout=subprocess.PIPE,
@@ -23,11 +25,11 @@ def git(*args: str) -> str:
     return result.stdout
 
 
-def write_commits_by_month() -> None:
-    log = git("log", "--date=format:%Y-%m", "--pretty=format:%ad")
+def write_commits_by_month(upstream: Path, out_dir: Path) -> None:
+    log = git(upstream, "log", "--date=format:%Y-%m", "--pretty=format:%ad")
     counts = Counter(line.strip() for line in log.splitlines() if line.strip())
 
-    output = OUT_DIR / "commits_by_month.csv"
+    output = out_dir / "commits_by_month.csv"
     with output.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["month", "commits"])
@@ -37,8 +39,8 @@ def write_commits_by_month() -> None:
     print(f"Written {output}")
 
 
-def list_source_files_at_commit(commit: str) -> list[str]:
-    files = git("ls-tree", "-r", "--name-only", commit).splitlines()
+def list_source_files_at_commit(upstream: Path, commit: str) -> list[str]:
+    files = git(upstream, "ls-tree", "-r", "--name-only", commit).splitlines()
     return [
         file
         for file in files
@@ -47,14 +49,14 @@ def list_source_files_at_commit(commit: str) -> list[str]:
     ]
 
 
-def count_lines_at_commit(commit: str) -> tuple[int, int, int]:
+def count_lines_at_commit(upstream: Path, commit: str) -> tuple[int, int, int]:
     total_files = 0
     source_lines = 0
     test_lines = 0
 
-    for file in list_source_files_at_commit(commit):
+    for file in list_source_files_at_commit(upstream, commit):
         try:
-            content = git("show", f"{commit}:{file}")
+            content = git(upstream, "show", f"{commit}:{file}")
         except subprocess.CalledProcessError:
             continue
 
@@ -69,9 +71,9 @@ def count_lines_at_commit(commit: str) -> tuple[int, int, int]:
     return total_files, source_lines, test_lines
 
 
-def write_loc_over_time() -> None:
+def write_loc_over_time(upstream: Path, out_dir: Path) -> None:
     # Use tagged releases plus HEAD as meaningful historical snapshots.
-    tags = git("tag", "--sort=creatordate").splitlines()
+    tags = git(upstream, "tag", "--sort=creatordate").splitlines()
 
     selected_tags = []
     if tags:
@@ -82,15 +84,15 @@ def write_loc_over_time() -> None:
 
     revisions = selected_tags + ["HEAD"]
 
-    output = OUT_DIR / "loc_over_time.csv"
+    output = out_dir / "loc_over_time.csv"
     with output.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["revision", "commit", "date", "files", "source_lines", "test_lines", "total_lines"])
 
         for revision in revisions:
-            commit = git("rev-list", "-n", "1", revision).strip()
-            date = git("show", "-s", "--format=%cs", commit).strip()
-            files, source_lines, test_lines = count_lines_at_commit(commit)
+            commit = git(upstream, "rev-list", "-n", "1", revision).strip()
+            date = git(upstream, "show", "-s", "--format=%cs", commit).strip()
+            files, source_lines, test_lines = count_lines_at_commit(upstream, commit)
 
             writer.writerow([
                 revision,
@@ -105,7 +107,7 @@ def write_loc_over_time() -> None:
     print(f"Written {output}")
 
 
-def write_refactoring_commits() -> None:
+def write_refactoring_commits(upstream: Path, out_dir: Path) -> None:
     keywords = [
         "refactor",
         "restructure",
@@ -122,6 +124,7 @@ def write_refactoring_commits() -> None:
     rows = []
     for keyword in keywords:
         log = git(
+            upstream,
             "log",
             "--all",
             "--regexp-ignore-case",
@@ -144,7 +147,7 @@ def write_refactoring_commits() -> None:
             seen.add(commit_hash)
             unique_rows.append(row)
 
-    output = OUT_DIR / "refactoring_commits.csv"
+    output = out_dir / "refactoring_commits.csv"
     with output.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["matched_keyword", "commit", "short_commit", "date", "author", "subject"])
@@ -153,10 +156,33 @@ def write_refactoring_commits() -> None:
     print(f"Written {output}")
 
 
-def write_summary() -> None:
-    total_commits = git("rev-list", "--count", "HEAD").strip()
-    first_commit = git("log", "--reverse", "--date=short", "--pretty=format:%h %ad %s", "-n", "1").strip()
-    latest_commit = git("log", "--date=short", "--pretty=format:%h %ad %s", "-n", "1").strip()
+def write_summary(upstream: Path, out_dir: Path) -> None:
+    total_commits = git(upstream, "rev-list", "--count", "HEAD").strip()
+    first_hash = git(upstream, "rev-list", "--max-parents=0", "HEAD").splitlines()[0]
+    first_commit = git(
+        upstream,
+        "show",
+        "-s",
+        "--date=short",
+        "--pretty=format:%h %ad %s",
+        first_hash,
+    ).strip()
+    latest_commit = git(
+        upstream,
+        "log",
+        "--date=short",
+        "--pretty=format:%h %ad %s",
+        "-n",
+        "1",
+    ).strip()
+    snapshot_commit = git(
+        upstream,
+        "show",
+        "-s",
+        "--date=short",
+        "--pretty=format:%h %ad %s",
+        BASE_SNAPSHOT,
+    ).strip()
 
     summary = f"""# Evolution Analysis Summary
 
@@ -165,6 +191,7 @@ def write_summary() -> None:
 - Total commits in upstream repository: {total_commits}
 - First commit: {first_commit}
 - Latest analysed commit: {latest_commit}
+- Coursework base snapshot: {snapshot_commit}
 
 ## Generated evidence files
 
@@ -177,21 +204,53 @@ def write_summary() -> None:
 The generated commit history and LOC data can be used to identify periods of rapid growth, stabilisation, or restructuring. The refactoring commit search is keyword-based, so each candidate commit should be manually inspected before drawing final conclusions in the report.
 """
 
-    output = OUT_DIR / "evolution_summary.md"
+    output = out_dir / "evolution_summary.md"
     output.write_text(summary, encoding="utf-8")
     print(f"Written {output}")
 
 
+def parse_args() -> Namespace:
+    parser = ArgumentParser(
+        description="Collect yarl upstream evolution metrics for the reengineering report."
+    )
+    parser.add_argument(
+        "--upstream",
+        type=Path,
+        default=DEFAULT_UPSTREAM,
+        help=(
+            "Path to a clone of aio-libs/yarl. Defaults to YARL_UPSTREAM_REPO "
+            "or ../yarl-upstream."
+        ),
+    )
+    parser.add_argument(
+        "--out-dir",
+        type=Path,
+        default=DEFAULT_OUT_DIR,
+        help=(
+            "Directory for generated CSV and summary files. Defaults to "
+            "YARL_ANALYSIS_OUT or Submission/analysis."
+        ),
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
-    if not UPSTREAM.exists():
-        raise SystemExit("Cannot find ../yarl-upstream. Clone it first.")
+    args = parse_args()
+    upstream = args.upstream.resolve()
+    out_dir = args.out_dir
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    if not (upstream / ".git").exists():
+        raise SystemExit(
+            f"Cannot find a git clone at {upstream}. "
+            "Clone https://github.com/aio-libs/yarl.git first, or pass --upstream."
+        )
 
-    write_commits_by_month()
-    write_loc_over_time()
-    write_refactoring_commits()
-    write_summary()
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    write_commits_by_month(upstream, out_dir)
+    write_loc_over_time(upstream, out_dir)
+    write_refactoring_commits(upstream, out_dir)
+    write_summary(upstream, out_dir)
 
 
 if __name__ == "__main__":
