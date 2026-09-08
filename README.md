@@ -17,6 +17,7 @@ The recorded final coursework results are **1,129 passed, 103 skipped, and 2 exp
 
 | Path | Contents |
 | --- | --- |
+| [`reports/`](reports/) | Additional local PDF version, with source filename and SHA-256 provenance |
 | [`Report/`](Report/) | Final report, source document, LaTeX export, and figures |
 | [`Submission/final-check/code_completion_summary.md`](Submission/final-check/code_completion_summary.md) | Completed work and recorded verification results |
 | [`Submission/analysis/`](Submission/analysis/) | System understanding, evolution and dynamic analysis |
