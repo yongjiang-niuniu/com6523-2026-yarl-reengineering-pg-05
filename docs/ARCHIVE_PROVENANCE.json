@@ -19,5 +19,6 @@
     "scope": "all reachable Git history",
     "findings": 0,
     "largest_blob_bytes": 1406108
-  }
+  },
+  "workflow_preservation": "Current workflow files relocated byte-for-byte from .github/workflows/ to docs/archived-workflows/; original paths/commits remain in history; Actions disabled."
 }
