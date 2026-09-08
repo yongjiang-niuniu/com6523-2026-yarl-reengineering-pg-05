@@ -1,0 +1,23 @@
+{
+  "source_repository": "https://github.com/TUOS-COM-Reengineering-2026/group-project-pg_05",
+  "destination_repository": "https://github.com/yongjiang-niuniu/com6523-2026-yarl-reengineering-pg-05",
+  "source_default_branch": "main",
+  "source_default_sha": "090d39f005a881a68ade8c62983ee2420d590bd1",
+  "source_branches": {
+    "main": "090d39f005a881a68ade8c62983ee2420d590bd1"
+  },
+  "source_tags": {},
+  "source_commit_count_all_refs": 40,
+  "prepared_at_utc": "2026-09-08T23:44:46.780619+00:00",
+  "visibility": "private",
+  "archive_maintainer": "Yongjiang Liu",
+  "preservation": "Complete accessible source Git branch and tag history; original commit timestamps and authors retained. Source organization repository is not modified.",
+  "limitations": "Git archive only: GitHub issues, pull-request discussion, Actions logs, permissions, and external links are not copied. External notebook subject clones are not included unless already tracked in source.",
+  "actions": "GitHub Actions disabled on the destination before uploading workflow files.",
+  "scan": {
+    "tool": "gitleaks 8.30.1",
+    "scope": "all reachable Git history",
+    "findings": 0,
+    "largest_blob_bytes": 1406108
+  }
+}
