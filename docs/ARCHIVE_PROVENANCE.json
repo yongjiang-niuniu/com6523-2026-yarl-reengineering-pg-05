@@ -20,5 +20,6 @@
     "findings": 0,
     "largest_blob_bytes": 1406108
   },
-  "workflow_preservation": "Current workflow files relocated byte-for-byte from .github/workflows/ to docs/archived-workflows/; original paths/commits remain in history; Actions disabled."
+  "workflow_preservation": "Current workflow files relocated byte-for-byte from .github/workflows/ to docs/archived-workflows/; original paths/commits remain in history; Actions disabled.",
+  "dependabot_preservation": "Original .github/dependabot.yml retained byte-for-byte in docs/archived-workflows/dependabot.yml to keep upstream dependency update scheduling inactive."
 }
