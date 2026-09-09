@@ -1,45 +1,60 @@
-# COM6523 Final Project: YARL Software Reengineering
+# YARL Software Reengineering
 
-A group software reengineering study of the Python URL library **yarl**, completed for COM6523 at the University of Sheffield in 2026. The project combines repository evolution analysis, static and dynamic analysis, focused refactoring, regression tests, and a written evaluation.
+A team study of how to make URL path resolution easier to understand and maintain without changing the public API of [yarl](README.rst). The project combines system and repository analysis, focused refactoring, regression tests, and a final evaluation for COM6523 at the University of Sheffield.
 
-> Personal preservation copy maintained by **Yongjiang Liu**. This archive is private because the source combines coursework, teaching materials, and/or team contributions.
+**Start with the [final group report](Report/PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf)** or use the [deliverable guide](docs/FINAL_DELIVERABLES.md) to follow its claims into the source and saved evidence.
 
-## Start with the final report
+> **中文概述：** 本项目是 COM6523 的五人团队软件重构作业。团队围绕 yarl 的 URL 路径拼接逻辑开展分析、职责拆分和回归验证，保留了最终实现、报告及历史测试记录。Yongjiang Liu 的贡献包括协调、需求分析、系统理解、集成与报告整合；底层 yarl 库及其他成员贡献均保留原有署名。
 
-The project is organised around the **PG_05 group report and its final implementation**: reengineering URL path resolution in `aio-libs/yarl` while preserving its public behaviour.
+## Project at a glance
 
-- [Read the officially submitted 19-page group report](Report/PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf).
-- [Follow the report-to-deliverable guide](docs/FINAL_DELIVERABLES.md) for requirements, source changes, regression tests, analysis, evaluation, and the relevant original commits.
-- [Check the canonical report and alternate file copy](reports/README.md). The classroom export and Downloads copy have different PDF file hashes but identical extracted text and identical page renders in the recorded comparison.
+| Item | Details |
+| --- | --- |
+| Project type | Team software reengineering study; group PG_05 / Blackboard PGT05 |
+| Course | COM6523, University of Sheffield, 2026 |
+| Technologies | Python, pytest, Radon, Git-based repository analysis |
+| Scope | Internal responsibilities behind `URL.join()`, `URL.joinpath()`, and `/` |
+| Available artifacts | Final source, regression tests, analysis scripts, saved evaluation outputs, report and report sources |
+| Status | Final coursework preserved; documented test results are historical, not a new test run |
 
-The report identifies upstream snapshot `e25e8d23e6912db52a23513ef1f6a17f889751ef` and the group repository linked below. This archive preserves the final classroom source snapshot `090d39f005a881a68ade8c62983ee2420d590bd1`, with current archival documentation added afterwards. The canonical report was verified byte for byte against **Attempt 1** of Blackboard’s **Group Project Final Submission (Group Feedback)**, submitted **20 May 2026 at 10:01 (UTC+8)**. The [submission record](reports/submission_record.json) contains file provenance without grades or feedback.
+## What the project changes
 
-## Final implementation
+URL joining must coordinate paths, queries, fragments and edge cases while retaining existing behaviour. The team selected two areas where those responsibilities were concentrated in `yarl/_url.py`:
 
-- Extracted `URL.join()` path, query, and fragment resolution into private helpers in `yarl/_join.py`.
-- Moved child-path construction behind `URL.joinpath()` and `/` into `yarl/_path.py`.
-- Added seven focused join regression tests and seven child-path regression tests.
-- Preserved baseline, analysis, and before/after evidence in `Submission/`.
+- **Joining URLs:** private helpers in [`yarl/_join.py`](yarl/_join.py) separate path, query and fragment resolution from `URL.join()`.
+- **Building child paths:** helpers in [`yarl/_path.py`](yarl/_path.py) handle the child-path assembly used by `URL.joinpath()` and the `/` operator.
+- **Protecting behaviour:** seven focused join tests and seven child-path tests supplement the existing regression suite.
 
-The recorded final coursework results are **1,129 passed, 103 skipped, and 2 expected failures**. Recorded cyclomatic complexity fell from 17 to 8 for `URL.join()` and from 17 to 1 for `URL._make_child()`. These are historical results in the final report and committed local evidence. They were not rerun during archival.
+The goal is a clearer internal structure. Decision logic remains in the extracted helpers; the work does not establish a runtime performance improvement.
+
+## Design and evaluation
+
+The project first recorded the system structure, upstream evolution and baseline measurements. Focused regression cases then protected the selected behaviour during refactoring. Static metrics, selected dynamic traces and local tests provided the before/after evaluation.
+
+| Measure | Baseline | Final recorded result |
+| --- | --- | --- |
+| Full local pytest suite | 1,115 passed, 103 skipped, 2 expected failures | 1,129 passed, 103 skipped, 2 expected failures |
+| `URL.join()` cyclomatic complexity | 17 | 8 |
+| `URL._make_child()` cyclomatic complexity | 17 | 1 |
+
+These values come from the report and committed coursework outputs. See the [historical evaluation and evidence links](docs/FINAL_DELIVERABLES.md#historical-evaluation) for the focused tests, nearby regression cases and Radon files. Neither archival work nor this documentation refresh reran the full suite.
 
 ## Repository guide
 
-| Path | Contents |
+| Path | Use it for |
 | --- | --- |
-| [`docs/FINAL_DELIVERABLES.md`](docs/FINAL_DELIVERABLES.md) | Report-led index of the final project and its evidence |
-| [`reports/`](reports/) | Additional local PDF version and verified report comparison |
-| [`Report/`](Report/) | Final report, source document, LaTeX export, and figures |
-| [`Submission/final-check/code_completion_summary.md`](Submission/final-check/code_completion_summary.md) | Completed work and recorded verification results |
-| [`Submission/analysis/`](Submission/analysis/) | System understanding, evolution and dynamic analysis |
-| [`Submission/reengineering/`](Submission/reengineering/) | Before/after evaluation and restructuring evidence |
-| [`yarl/_join.py`](yarl/_join.py), [`yarl/_path.py`](yarl/_path.py) | Refactored internal responsibilities |
-| [`tests/test_url_join_regression.py`](tests/test_url_join_regression.py), [`tests/test_url_joinpath_regression.py`](tests/test_url_joinpath_regression.py) | Added regression coverage |
-| [`README.rst`](README.rst) | Original upstream yarl documentation |
+| [`docs/README.md`](docs/README.md) | Choose a reading, reproduction or provenance route |
+| [`Report/`](Report/) | Read the final report or inspect its source documents and figures |
+| [`yarl/`](yarl/) | Inspect the library and the refactored internals |
+| [`tests/test_url_join_regression.py`](tests/test_url_join_regression.py), [`tests/test_url_joinpath_regression.py`](tests/test_url_joinpath_regression.py) | Read the 14 focused regression cases |
+| [`Submission/analysis/`](Submission/analysis/) | Review system understanding, evolution and dynamic analysis |
+| [`Submission/baseline/`](Submission/baseline/), [`Submission/reengineering/`](Submission/reengineering/), [`Submission/final-check/`](Submission/final-check/) | Compare the recorded baseline, changes and final checks |
+| [`tools/run_local_checks.py`](tools/run_local_checks.py) | Run the broader local evaluation in a separate working copy |
+| [`README.rst`](README.rst) | Read the original upstream library documentation |
 
-## Build and test the final project
+## Getting started
 
-Use Python 3.10 or newer, as specified in `setup.cfg`. For a local pure-Python development environment:
+For a pure-Python development environment, use Python 3.10 or newer as specified in [`setup.cfg`](setup.cfg):
 
 ```bash
 python -m venv .venv
@@ -49,24 +64,18 @@ YARL_NO_EXTENSIONS=1 python -m pip install -e .
 YARL_NO_EXTENSIONS=1 python -m pytest -q --no-cov tests/test_url_join_regression.py tests/test_url_joinpath_regression.py
 ```
 
-These commands run the focused tests without intentionally rewriting the saved coursework outputs. The existing `tools/run_local_checks.py` runs a broader verification sequence and **overwrites** files in `Submission/final-check/`; use a separate working copy for a new full evaluation if you want to preserve the historical evidence.
+This runs the focused tests without intentionally replacing the saved coursework outputs. For the full suite, Radon, optional compiled extensions and analysis regeneration, follow [Reproducing the final project](docs/REPRODUCING_FINAL_PROJECT.md). In particular, `tools/run_local_checks.py` writes to `Submission/final-check/`, and the dynamic-analysis script writes to `Submission/analysis/`; the guide uses a separate working copy to protect historical evidence.
 
-For the full suite, Radon, analysis scripts, and a separate worktree that protects the saved evidence, follow [reproducing the final project](docs/REPRODUCING_FINAL_PROJECT.md). The optional compiled build requires the compiler/Cython setup described in the upstream files. Historical full-suite output is retained in [`Submission/final-check/local_full_pytest.txt`](Submission/final-check/local_full_pytest.txt). For the separate upstream history used in mining, see [`reproducibility_notes.md`](Submission/analysis/reproducibility_notes.md).
+## Verification and limitations
 
-## Contribution and attribution
+Previous archive checks matched the submitted PDF byte for byte, checked the stored test totals, and matched all 302 numbered source lines in the report's six code listings to the named source files after ignoring surrounding whitespace. The source, tests, analysis outputs, tools and original report remain unchanged from the final classroom snapshot. This documentation refresh checks links and preservation, rather than generating new experiment results.
 
-This is team work. The project report credits Yongjiang Liu with coordination, requirements analysis, system understanding, integration, and report synthesis. Original Git authorship and the team report preserve the fuller contribution record; the archive does not assign all implementation work to one person. The underlying yarl library is an upstream open-source project, with its Apache 2.0 license and NOTICE retained.
+The dynamic traces cover selected scenarios. Some environment dependencies are unpinned, and reproducing repository evolution requires the separate upstream history and the original sampled revisions. The original classroom Actions run could not start because of account/billing limits; the saved local results do not establish a passing remote CI run. See [reproduction constraints](docs/REPRODUCING_FINAL_PROJECT.md) and [archive scope](docs/ARCHIVE_NOTES.md).
 
-## Verification and limits
+## Attribution and provenance
 
-Archive validation checks history preservation, file integrity, source attribution, README links, and secret/large-file screening. The report review also matched all 302 numbered lines in its six code listings to the corresponding source text (ignoring surrounding whitespace), checked the recorded test totals, and confirmed that `yarl/`, `tests/`, `Submission/`, `tools/`, and `Report/` remain unchanged from the final classroom snapshot. The full yarl test suite was not rerun as part of this documentation archive.
+The report credits **Dibing Bai, Yongjiang Liu, Jingxuan Wang, Ziqi Zhao and Xuhao Zhou**. Yongjiang Liu's recorded responsibilities include coordination, requirements, target selection, system understanding, integration and report/evidence synthesis. The [team contribution table](docs/FINAL_DELIVERABLES.md#team-credit), original Git authorship and report retain the fuller record.
 
-## Archive provenance
+The underlying library is upstream `aio-libs/yarl` work. Its [Apache 2.0 license](LICENSE), [NOTICE](NOTICE) and original documentation remain intact. No new license is asserted over team or course materials.
 
-- Original classroom repository: [TUOS-COM-Reengineering-2026/group-project-pg_05](https://github.com/TUOS-COM-Reengineering-2026/group-project-pg_05).
-- Original default branch: `main`, snapshot [`090d39f005a8`](https://github.com/TUOS-COM-Reengineering-2026/group-project-pg_05/commit/090d39f005a881a68ade8c62983ee2420d590bd1).
-- Preserved source branches: `main`; preserved tags: 0.
-- Original README: [`README.rst`](README.rst). Its original wording is retained; any root-relative links in a copied course README refer to the original repository root.
-- Machine-readable record: [`docs/ARCHIVE_PROVENANCE.json`](docs/ARCHIVE_PROVENANCE.json).
-
-The original Git authors, dates, and commits are preserved. The archive adds current documentation without rewriting past work. Existing licenses and notices remain applicable; no new license is asserted over course or team materials. GitHub Actions is disabled in this personal copy. Imported classroom/release workflow files are retained in [`docs/archived-workflows/`](docs/archived-workflows/) as inactive reference material, alongside the upstream Dependabot configuration; their original paths remain in Git history. GitHub issues, pull-request conversations, Actions logs, and external resources are outside this Git archive.
+The canonical report is the official Blackboard submission from **20 May 2026, 10:01 (UTC+8)**. This personal copy preserves the original classroom history through `090d39f005a881a68ade8c62983ee2420d590bd1`; later commits document preservation and navigation. See the [submission record](reports/submission_record.json), [report versions](reports/README.md) and [archive notes](docs/ARCHIVE_NOTES.md).
