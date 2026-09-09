@@ -1,0 +1,23 @@
+{
+  "course": "COM6523",
+  "blackboard_course_id": "_123483_1",
+  "assessment": "Group Project Final Submission (Group Feedback)",
+  "assessment_id": "_9085796_1",
+  "attempt_id": "_136819_1",
+  "attempt": 1,
+  "submitted_at_display": "20/05/2026, 10:01 (UTC+8)",
+  "submission_state": "submitted",
+  "group": "PGT05",
+  "submission_requirements": "PDF report on Blackboard plus code/activity in GitHub Classroom repository; separate data in Submission/",
+  "source_url": "https://vle.shef.ac.uk/ultra/courses/_123483_1/assessment/_9085796_1/overview",
+  "downloaded_file": "PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf",
+  "bytes": 396344,
+  "sha256": "de0b49b299663d7dc180f24d015b760ee9c024c6326ee124c6d1e3584e7a659c",
+  "downloaded_via": "Blackboard submitted attempt attachment Download menu",
+  "canonical_report": "Report/PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf",
+  "verified_at_utc": "2026-09-09T00:32:42.907648+00:00",
+  "verification": "The PDF downloaded from the submitted Blackboard attempt matches the existing canonical report byte for byte (SHA-256 and size).",
+  "report_group_label": "PG_05",
+  "blackboard_group_label": "PGT05",
+  "retained_content": "Submission identifiers and file provenance only; grades, feedback and comments are not included."
+}

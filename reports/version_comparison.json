@@ -1,0 +1,236 @@
+{
+  "reviewed_at_utc": "2026-09-09T00:30:16.415778+00:00",
+  "versions": [
+    {
+      "path": "Report/PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf",
+      "bytes": 396344,
+      "sha256": "de0b49b299663d7dc180f24d015b760ee9c024c6326ee124c6d1e3584e7a659c",
+      "page_count": 19,
+      "producer": "ReportLab PDF Library - (opensource)",
+      "page_text_sha256": [
+        "bc11d74d905f8dfa12400eeae8533034a7bc79c49eecb940135c03158352dd15",
+        "57262ccadf8539e6c470d74759612596365cfd00f7d89100688d53cf8f297607",
+        "131f4d7d40a3b55315c75ac299ceebf37c38cea0299390973d9484cfcf8e10de",
+        "67ee487ac3fd62750c4e8ad7b7e7588f52c564dd0440450f3604ddb828f84b0c",
+        "d29c135f967c41fae6f89d26f3de00dfad408b558c99b9cd90c5b8d381531fb3",
+        "02fb779bcd56ae573cf589bfc5b042f9fd88e3e6a56c9c545b5f859ec753b567",
+        "cf9bad5209be43f9139ca00ba9aa4a54ad8a2cda1856fda1f57bf4943b049c4c",
+        "dc88def190a1a7361fcaefc1813d242215f665cc8b4614d8317a8441b4faa29f",
+        "bd21edd26dd6751ea6f00eab3eb2c706958dc23084165410a31b36c3794fdc4b",
+        "ae5a3ee1f7e74d7b53627ca75a2d0f2fb641344baebc45148073e8f01aed2038",
+        "5edf0525ce5e7b05ccf36dbcb6ac813544d6a1c5a42f6db444f4ef03a3140fd9",
+        "0abce715f7af7cd6afdbebdd90d019532621e1e083d41392ab26798a35a12a52",
+        "46120bf7ca09c474571abd0f36043c20ae7021ce91b6da65da3991f024137477",
+        "54456454c26ec60c25c37deaecbd0895c768b9ad7e24fedfe193cbeb6206b365",
+        "9e9dc382a197879b1f0bbcd7187498fbaa34907ff7e5bf611675d913d1cdfd38",
+        "41ea7a23f497d0eea834c273c4e3aba1d962bd7b6032d78d93c4df82c78f0eff",
+        "1e255d0de4d993e312e3e3643d6535a32c79319de6f51edbc5c8307eb11890ca",
+        "145a8f4c577ad7aaf19af47b8d6ce4f8fbc2c20b12b8ec18aeb6a99ddf81737e",
+        "fc1639c752406877010bee9718b5860e23733daa604c34ebc8ef0196f4257f25"
+      ]
+    },
+    {
+      "path": "reports/PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf",
+      "bytes": 395519,
+      "sha256": "d728243884c3b382a22ac597627111c19229c8b314a5156cb725332d8c590151",
+      "page_count": 19,
+      "producer": "PSPDFKit",
+      "page_text_sha256": [
+        "bc11d74d905f8dfa12400eeae8533034a7bc79c49eecb940135c03158352dd15",
+        "57262ccadf8539e6c470d74759612596365cfd00f7d89100688d53cf8f297607",
+        "131f4d7d40a3b55315c75ac299ceebf37c38cea0299390973d9484cfcf8e10de",
+        "67ee487ac3fd62750c4e8ad7b7e7588f52c564dd0440450f3604ddb828f84b0c",
+        "d29c135f967c41fae6f89d26f3de00dfad408b558c99b9cd90c5b8d381531fb3",
+        "02fb779bcd56ae573cf589bfc5b042f9fd88e3e6a56c9c545b5f859ec753b567",
+        "cf9bad5209be43f9139ca00ba9aa4a54ad8a2cda1856fda1f57bf4943b049c4c",
+        "dc88def190a1a7361fcaefc1813d242215f665cc8b4614d8317a8441b4faa29f",
+        "bd21edd26dd6751ea6f00eab3eb2c706958dc23084165410a31b36c3794fdc4b",
+        "ae5a3ee1f7e74d7b53627ca75a2d0f2fb641344baebc45148073e8f01aed2038",
+        "5edf0525ce5e7b05ccf36dbcb6ac813544d6a1c5a42f6db444f4ef03a3140fd9",
+        "0abce715f7af7cd6afdbebdd90d019532621e1e083d41392ab26798a35a12a52",
+        "46120bf7ca09c474571abd0f36043c20ae7021ce91b6da65da3991f024137477",
+        "54456454c26ec60c25c37deaecbd0895c768b9ad7e24fedfe193cbeb6206b365",
+        "9e9dc382a197879b1f0bbcd7187498fbaa34907ff7e5bf611675d913d1cdfd38",
+        "41ea7a23f497d0eea834c273c4e3aba1d962bd7b6032d78d93c4df82c78f0eff",
+        "1e255d0de4d993e312e3e3643d6535a32c79319de6f51edbc5c8307eb11890ca",
+        "145a8f4c577ad7aaf19af47b8d6ce4f8fbc2c20b12b8ec18aeb6a99ddf81737e",
+        "fc1639c752406877010bee9718b5860e23733daa604c34ebc8ef0196f4257f25"
+      ]
+    }
+  ],
+  "local_download_original": {
+    "filename": "PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf",
+    "sha256": "d728243884c3b382a22ac597627111c19229c8b314a5156cb725332d8c590151",
+    "matches_archived_local_pdf": true
+  },
+  "comparison": {
+    "extracted_text": "identical on all 19 corresponding pages",
+    "rendering": "identical pixels on all 19 corresponding pages at 85 dpi using the same pdftoppm invocation",
+    "render_dpi": 85,
+    "page_render_checks": [
+      {
+        "page": 1,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 2,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 3,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 4,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 5,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 6,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 7,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 8,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 9,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 10,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 11,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 12,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 13,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 14,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 15,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 16,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 17,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 18,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      },
+      {
+        "page": 19,
+        "size": [
+          703,
+          994
+        ],
+        "render_identical": true
+      }
+    ],
+    "interpretation": "Same visible and extracted report content in two PDF file variants; original files preserved."
+  },
+  "submission_verification": {
+    "status": "verified_against_blackboard_submitted_attachment",
+    "record": "reports/submission_record.json",
+    "canonical_report": "Report/PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf",
+    "canonical_sha256": "de0b49b299663d7dc180f24d015b760ee9c024c6326ee124c6d1e3584e7a659c",
+    "verified_at_utc": "2026-09-09T00:32:42.907648+00:00",
+    "attempt": 1,
+    "submitted_at_display": "20/05/2026, 10:01 (UTC+8)"
+  },
+  "original_copy_provenance": "reports/provenance.json"
+}
