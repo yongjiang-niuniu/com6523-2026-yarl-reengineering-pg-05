@@ -4,6 +4,8 @@ A team study of how to make URL path resolution easier to understand and maintai
 
 **Start with the [final group report](Report/PG_05_COM6523_Software_Reengineering_Group_Project_Report.pdf)** or use the [deliverable guide](docs/FINAL_DELIVERABLES.md) to follow its claims into the source and saved evidence.
 
+The Overleaf version checked on **10 September 2026** was still an **11-page unfinished earlier draft**. The verified **19-page submitted report** linked above remains canonical; the incomplete draft is not included as a competing final deliverable.
+
 > **中文概述：** 本项目是 COM6523 的五人团队软件重构作业。团队围绕 yarl 的 URL 路径拼接逻辑开展分析、职责拆分和回归验证，保留了最终实现、报告及历史测试记录。Yongjiang Liu 的贡献包括协调、需求分析、系统理解、集成与报告整合；底层 yarl 库及其他成员贡献均保留原有署名。
 
 ## Project at a glance
